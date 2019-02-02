@@ -2,6 +2,7 @@
 import random
 import datetime
 import json
+import os
 
 from kennitala import Kennitala
 
@@ -17,7 +18,8 @@ class IcelanderGenerator(object):
 
     def __init__(self, *args, **kwargs):
         super(IcelanderGenerator, self).__init__(*args, **kwargs)
-        with open(NameScraper.FILE_NAME, 'r') as names_file:
+        file_path = os.path.dirname(__file__)
+        with open(os.path.join(file_path, NameScraper.FILE_NAME), 'r') as names_file:
             self.names = json.loads(names_file.read())
 
     def get_first_name(self, gender='female'):
