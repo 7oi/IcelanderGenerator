@@ -13,7 +13,8 @@ class NameScraper(object):
     WIKI_MALES = u'wiki/Listi_yfir_íslensk_eiginnöfn_karlmanna'
     WIKI_NAME_XPATH = u'//div[@id="mw-content-text"]/div/ul/li/a'
     WIKI_GENETIVE_XPATH = u'//*[contains(text(), "Eignarfall")]'
-    FILE_NAME = 'icelandic_names.json'
+    NAMES_FILE = 'icelandic_names.json'
+    NON_GENETIVE_NAMES_FILE = 'non_genetive_names.json'
     names = {
         'female': [],
         'male': []
@@ -39,16 +40,19 @@ class NameScraper(object):
         name_page = requests.get(self.WIKI_FORMAT.format(url))
         name_page_tree = html.fromstring(name_page.content)
         try:
-            neighbour = name_page_tree.xpath(self.WIKI_GENETIVE_XPATH)[0]
-            genetive_name = neighbour.getparent().getparent().getchildren()[1].text
+            # The xpath should give the <a> element that has the genetive label
+            label_element = name_page_tree.xpath(self.WIKI_GENETIVE_XPATH)[0]
+            # The element we want is the next cell in the table, thus we need to get the parents sibling
+            genetive_name = label_element.getparent().getparent().getchildren()[1].text
         except IndexError:
             return None
         return (name, genetive_name)
 
     def scrape_wiki_for_names(self):
         """Scrape icelandic wikipedia page for names.
+        Should only be used for updating icelandic_names.json file from time to time. As it's a scraper
+        that visits multiple wikipedia pages it will take a while to do it's thing.
         """
-
         for gender, path in [('female', self.WIKI_FEMALES), ('male', self.WIKI_MALES)]:
             page = requests.get(self.WIKI_FORMAT.format(path))
             tree = html.fromstring(page.content)
@@ -57,7 +61,7 @@ class NameScraper(object):
                 name = self.get_name(item)
                 if name is None:
                     name = item.text
-                    print(u'No genetive version found. Not adding {}'.format(name))
+                    print(u'No genetive version found. Not adding {} to names'.format(name))
                     self.non_genetive_names[gender].append(name)
                     continue
                 print(u"Adding: ({}, {}) to {} names".format(name[0], name[1], gender))
@@ -66,12 +70,11 @@ class NameScraper(object):
     def save_names_to_file(self):
         """Saves names to a json file
         """
-
         file_path = os.path.dirname(__file__)
-        with open(os.path.join(file_path, self.FILE_NAME), 'w') as outfile:
+        with open(os.path.join(file_path, self.NAMES_FILE), 'w') as outfile:
             json.dump(self.names, outfile, indent=2)
 
-        with open(os.path.join(file_path, 'rejects.json'), 'w') as outfile:
+        with open(os.path.join(file_path, self.NON_GENETIVE_NAMES_FILE), 'w') as outfile:
             json.dump(self.non_genetive_names, outfile, indent=2)
 
     def update_names(self):
