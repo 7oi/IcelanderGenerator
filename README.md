@@ -10,7 +10,7 @@ a bunch of icelanders are required. Can also just be used for fun, I guess.
 ## Installation
 Inside your virtualenv run
 ```
-$ pip install icelander_generator
+$ pip install icelander-generator
 ```
 
 ## Usage
