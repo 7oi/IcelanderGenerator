@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import random
 import datetime
 import json
@@ -44,9 +45,9 @@ class IcelanderGenerator(object):
         if parent_name is None:
             parent_name = random.choice(self.names[random.choice(self.genders)])[1]
         if gender == 'male':
-            return '{}son'.format(parent_name)
+            return u'{}son'.format(parent_name)
         else:
-            return '{}dóttir'.format(parent_name)
+            return u'{}dóttir'.format(parent_name)
 
     def get_random_person(self, gender=None, year=None):
         """Get random person as a dict
