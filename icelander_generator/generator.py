@@ -93,3 +93,12 @@ class IcelanderGenerator(object):
         """
 
         return [self.get_random_person(gender, year) for i in range(num_people)]
+
+    def dump_random_people_to_file(self, filename='random_people_dump.json', num_people=1, gender=None, year=None):
+        """Dumps generated people to a json file
+
+        Arguments:
+            filename {str} -- Filename to dump to (default: {'random_people_dump.json'})
+        """
+        with open(filename, 'w') as outfile:
+            json.dump(self.get_random_people(num_people, gender, year), outfile, indent=2)
