@@ -1,12 +1,19 @@
 # Icelander generator
 Icelander generator is a tool made to generate a bunch of icelanders.
 
+## Details
 Icelander generator uses a list of male and female names scraped from is.wikipedia.org and
 the kennitala pypi package (https://pypi.org/project/kennitala/) to generate random people
-with proper icelandic names and kennitala. It can be very useful for testing purposes
+with proper icelandic names and kennitala. It can be very useful for testing purposes where
+a bunch of icelanders are required. Can also just be used for fun, I guess.
+
+## Installation
+Inside your virtualenv run
+```
+$ pip install icelander_generator
+```
 
 ## Usage
-Best shown with a few examples
 ```python
 from icelander_generator import IcelanderGenerator
 
@@ -41,3 +48,10 @@ ig.get_random_people(10, gender='female', year=1981)
 # It's also possible to just dump a bunch of people to a json file
 ig.dump_random_people_to_file(filename='dump.json', num_people=10, gender='female', year='1981')
 ```
+
+
+## Future ideas
+- Add proper addresses and postal codes
+- Add method to create families
+
+I'm also open for suggestions and pull requests on https://github.com/7oi/IcelanderGenerator
