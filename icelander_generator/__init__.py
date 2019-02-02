@@ -4,4 +4,4 @@ Contains the generator module and name_scraper module
 """
 
 # Version of the realpython-reader package
-__version__ = "0.2.0"
+__version__ = "0.2.1"
