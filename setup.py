@@ -9,7 +9,12 @@ setup(
   author_email='7oi@7oi.is',
   license='MIT',
   url='https://github.com/7oi/IcelanderGenerator',
-  install_requires=['lxml', 'requests', 'kennitala'],
+  install_requires=[
+    'lxml==4.3.0',
+    'requests==2.21.0',
+    'kennitala==0.1.3'
+  ],
+  include_package_data=True,
   keywords=['tests', 'generator'],
   classifiers = [],
 )
