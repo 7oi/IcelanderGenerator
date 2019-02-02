@@ -1,4 +1,8 @@
 # -*- coding: utf-8 -*-
+"""generator module
+Contains the IcelandicGereator class, ie. the main attraction
+"""
+
 import random
 import datetime
 import json
@@ -10,6 +14,10 @@ from .name_scraper import NameScraper
 
 
 class IcelanderGenerator(object):
+    """The Icelander generator
+    Class that contains methods to generate random icelanders and even dump them to a file
+    """
+
     genders = ['female', 'male']
     names = {
         'female': [],
@@ -48,8 +56,7 @@ class IcelanderGenerator(object):
             parent_name = random.choice(self.names[random.choice(self.genders)])[1]
         if gender == 'male':
             return u'{}son'.format(parent_name)
-        else:
-            return u'{}dóttir'.format(parent_name)
+        return u'{}dóttir'.format(parent_name)
 
     def get_random_person(self, gender=None, year=None):
         """Get random person as a dict
@@ -92,7 +99,7 @@ class IcelanderGenerator(object):
             list -- List of person dicts
         """
 
-        return [self.get_random_person(gender, year) for i in range(num_people)]
+        return [self.get_random_person(gender, year) for _i in range(num_people)]
 
     def dump_random_people_to_file(self, filename='random_people_dump.json', num_people=1, gender=None, year=None):
         """Dumps generated people to a json file

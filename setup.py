@@ -1,10 +1,10 @@
-import os
-
+from os import path
 from setuptools import setup
 
-def get_long_desctiption():
-    readme_file = open(os.path.join(os.path.dirname(__file__), 'README.md'), 'r')
-    return readme_file.read()
+
+this_directory = path.abspath(path.dirname(__file__))
+with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
+    long_description = f.read()
 
 
 setup(
@@ -14,7 +14,7 @@ setup(
     description='A utility to generate random Icelanders',
     author='7oi',
     author_email='7oi@7oi.is',
-    long_description=get_long_desctiption(),
+    long_description=long_description,
     long_description_content_type="text/markdown",
     license='MIT',
     url='https://github.com/7oi/IcelanderGenerator',

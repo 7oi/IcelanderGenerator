@@ -11,3 +11,6 @@ update_pypi:
 
 clean:
 	rm -Rf build dist
+
+lint:
+	pylint icelander_generator --rcfile=setup.cfg

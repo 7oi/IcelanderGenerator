@@ -1,13 +1,21 @@
 # -*- coding: utf-8 -*-
+"""name_scraper module
+Contains the NameScraper class.
+"""
+
 import json
 import os
-import random
 import requests
 
 from lxml import html
 
 
 class NameScraper(object):
+    """
+    NameScraper is made for scraping the icelandic names from wikipedia and dumping them
+    into a json file for use in IcelanderGenerator
+    """
+
     WIKI_FORMAT = u'https://is.wikipedia.org/{}'
     WIKI_FEMALES = u'wiki/Listi_yfir_%C3%ADslensk_eiginn%C3%B6fn_kvenmanna'
     WIKI_MALES = u'wiki/Listi_yfir_íslensk_eiginnöfn_karlmanna'
@@ -61,10 +69,10 @@ class NameScraper(object):
                 name = self.get_name(item)
                 if name is None:
                     name = item.text
-                    print(u'No genetive version found. Not adding {} to names'.format(name))
+                    print u'No genetive version found. Not adding {} to names'.format(name)
                     self.non_genetive_names[gender].append(name)
                     continue
-                print(u"Adding: ({}, {}) to {} names".format(name[0], name[1], gender))
+                print u"Adding: ({}, {}) to {} names".format(name[0], name[1], gender)
                 self.names[gender].append(name)
 
     def save_names_to_file(self):
@@ -78,5 +86,8 @@ class NameScraper(object):
             json.dump(self.non_genetive_names, outfile, indent=2)
 
     def update_names(self):
+        """Scrapes all the names and dumps them to the json file
+        """
+
         self.scrape_wiki_for_names()
         self.save_names_to_file()
