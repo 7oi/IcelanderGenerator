@@ -26,8 +26,7 @@ class IcelanderGenerator(object):
         'male': [],
     }
 
-    def __init__(self, *args, **kwargs):
-        super(IcelanderGenerator, self).__init__(*args, **kwargs)
+    def __init__(self):
         file_path = os.path.dirname(__file__)
         with open(os.path.join(file_path, NameScraper.NAMES_FILE), 'r') as names_file:
             self.names = json.loads(names_file.read())
