@@ -2,6 +2,8 @@
 """name_scraper module
 Contains the NameScraper class.
 """
+from __future__ import unicode_literals
+from builtins import object
 
 import json
 import os
@@ -16,11 +18,11 @@ class NameScraper(object):
     into a json file for use in IcelanderGenerator
     """
 
-    WIKI_FORMAT = u'https://is.wikipedia.org/{}'
-    WIKI_FEMALES = u'wiki/Listi_yfir_%C3%ADslensk_eiginn%C3%B6fn_kvenmanna'
-    WIKI_MALES = u'wiki/Listi_yfir_íslensk_eiginnöfn_karlmanna'
-    WIKI_NAME_XPATH = u'//div[@id="mw-content-text"]/div/ul/li/a'
-    WIKI_GENETIVE_XPATH = u'//*[contains(text(), "Eignarfall")]'
+    WIKI_FORMAT = 'https://is.wikipedia.org/{}'
+    WIKI_FEMALES = 'wiki/Listi_yfir_%C3%ADslensk_eiginn%C3%B6fn_kvenmanna'
+    WIKI_MALES = 'wiki/Listi_yfir_íslensk_eiginnöfn_karlmanna'
+    WIKI_NAME_XPATH = '//div[@id="mw-content-text"]/div/ul/li/a'
+    WIKI_GENETIVE_XPATH = '//*[contains(text(), "Eignarfall")]'
     NAMES_FILE = 'icelandic_names.json'
     NON_GENETIVE_NAMES_FILE = 'non_genetive_names.json'
     names = {
@@ -69,10 +71,10 @@ class NameScraper(object):
                 name = self.get_name(item)
                 if name is None:
                     name = item.text
-                    print u'No genetive version found. Not adding {} to names'.format(name)
+                    print('No genetive version found. Not adding {} to names'.format(name))
                     self.non_genetive_names[gender].append(name)
                     continue
-                print u"Adding: ({}, {}) to {} names".format(name[0], name[1], gender)
+                print('Adding: ({}, {}) to {} names'.format(name[0], name[1], gender))
                 self.names[gender].append(name)
 
     def save_names_to_file(self):

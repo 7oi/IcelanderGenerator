@@ -21,7 +21,8 @@ setup(
     install_requires=[
         'lxml==4.3.0',
         'requests==2.21.0',
-        'kennitala==0.1.3'
+        'kennitala==0.1.3',
+        'future==0.17.1'
     ],
     include_package_data=True,
     keywords=['tests', 'generator'],

@@ -2,6 +2,8 @@
 """generator module
 Contains the IcelandicGereator class, ie. the main attraction
 """
+from __future__ import unicode_literals
+from builtins import object
 
 import random
 import datetime
@@ -55,8 +57,8 @@ class IcelanderGenerator(object):
         if parent_name is None:
             parent_name = random.choice(self.names[random.choice(self.genders)])[1]
         if gender == 'male':
-            return u'{}son'.format(parent_name)
-        return u'{}dóttir'.format(parent_name)
+            return '{}son'.format(parent_name)
+        return '{}dóttir'.format(parent_name)
 
     def get_random_person(self, gender=None, year=None):
         """Get random person as a dict
