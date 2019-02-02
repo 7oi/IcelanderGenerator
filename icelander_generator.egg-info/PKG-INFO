@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: icelander-generator
-Version: 0.1.4
+Version: 0.2.0
 Summary: A utility to generate random Icelanders
 Home-page: https://github.com/7oi/IcelanderGenerator
 Author: 7oi
@@ -18,7 +18,7 @@ Description: # Icelander generator
         ## Installation
         Inside your virtualenv run
         ```
-        $ pip install icelander_generator
+        $ pip install icelander-generator
         ```
         
         ## Usage

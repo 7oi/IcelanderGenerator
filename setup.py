@@ -19,10 +19,10 @@ setup(
     license='MIT',
     url='https://github.com/7oi/IcelanderGenerator',
     install_requires=[
-        'lxml==4.3.0',
-        'requests==2.21.0',
-        'kennitala==0.2.0',
-        'future==0.17.1'
+        'lxml',
+        'requests',
+        'kennitala',
+        'future'
     ],
     include_package_data=True,
     keywords=['tests', 'generator'],
