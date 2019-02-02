@@ -10,7 +10,7 @@ with open(path.join(this_directory, 'README.md'), 'r') as f:
 setup(
     name='icelander_generator',
     packages=['icelander_generator'], # this must be the same as the name above
-    version='0.1.4',
+    version='0.2.0',
     description='A utility to generate random Icelanders',
     author='7oi',
     author_email='7oi@7oi.is',
@@ -21,7 +21,7 @@ setup(
     install_requires=[
         'lxml==4.3.0',
         'requests==2.21.0',
-        'kennitala==0.1.4',
+        'kennitala==0.2.0',
         'future==0.17.1'
     ],
     include_package_data=True,
