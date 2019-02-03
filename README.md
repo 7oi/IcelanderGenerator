@@ -14,11 +14,13 @@ $ pip install icelander-generator
 ```
 
 ## Usage
+### Icelander
 ```python
 from icelander_generator import Icelander
 
 icelander = Icelander()
 
+# Generate a random person
 icelander.get_random_person()
 # Returns {
 #   'ssn': '{random ssn}',
@@ -27,6 +29,7 @@ icelander.get_random_person()
 #   'lastname': '{randomly selected last name based on gender}',
 # }
 
+# Generate a woman born in 1981
 icelander.get_random_person(gender='female', year=1981)
 # Returns {
 #   'ssn': '{random ssn from year 1981}',
@@ -35,20 +38,38 @@ icelander.get_random_person(gender='female', year=1981)
 #   'lastname': '{randomly selected last name based on gender}',
 # }
 
+# Return a list of randomly generated people of random age and gender
 icelander.get_random_people(10)
-# Returns a list of randomly generated people of random age and gender
 
+# Return a list of randomly generated women born in 1981
 icelander.get_random_people(10, gender='female', year=1981)
-# Returns a list of randomly generated women born in 1981
 
+# Dump result from get_random_people to a json file
 icelander.dump_random_people_to_file(filename='dump.json', num_people=10, gender='female', year='1981')
-# Dumps result from get_random_people to a json file
+```
+
+### Address
+```python
+from icelander_generator.address import Address
+
+ad = Address()
+
+# Get random address
+ad.get_random_address()
+
+# Get random address in Reykjavík
+ad.get_random_address(place='Reykjavík')
+
+# Get random address in 101 PO code
+ad.get_random_address(po_code='101')
+
+# Get random address, but only up to street number 23
+ad.get_random_address(max_num=23)
+
 ```
 
 
 ## Future ideas
-- Add proper addresses and postal codes
-- Add method to create families of various family types
 - More gender options?
 - Middle names
 - Company generator

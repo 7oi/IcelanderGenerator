@@ -12,10 +12,10 @@ class Address(object):
     Generates random icelandic addresses from existing street names and po codes.
     House numbers are randomly generated, so they can be non-existent.
     """
-    streets = []
     DATA_FOLDER = 'data'
     PO_CODES_FILE = 'po_codes.tsv'
     STREETS_FILE = 'streets.tsv'
+    streets = []
 
     def __init__(self):
         self.import_streets()
