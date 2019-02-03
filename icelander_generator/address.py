@@ -13,6 +13,9 @@ class Address(object):
     House numbers are randomly generated, so they can be non-existent.
     """
     streets = []
+    DATA_FOLDER = 'data'
+    PO_CODES_FILE = 'po_codes.tsv'
+    STREETS_FILE = 'streets.tsv'
 
     def __init__(self):
         self.import_streets()
@@ -23,14 +26,14 @@ class Address(object):
 
         curr_dir = path.dirname(__file__)
         # Read postal codes from tsv file
-        with open(path.join(curr_dir, 'po_codes.tsv'), 'rt', encoding='utf-8') as poc_file:
+        with open(path.join(curr_dir, self.DATA_FOLDER, self.PO_CODES_FILE), 'rt', encoding='utf-8') as poc_file:
             postal_codes = {
                 po_code: place
                 for po_code, place in csv.reader(poc_file, delimiter='\t')
             }
 
         # Read street names from csv file
-        with open(path.join(curr_dir, 'streets.tsv'), 'rt', encoding='utf-8') as streets:
+        with open(path.join(curr_dir, self.DATA_FOLDER, self.STREETS_FILE), 'rt', encoding='utf-8') as streets:
             for po_code, street in csv.reader(streets, delimiter='\t'):
                 place = postal_codes.get(po_code)
                 self.streets.append((street, po_code, place))

@@ -21,6 +21,7 @@ class NameScraper(object):
     WIKI_MALES = 'wiki/Listi_yfir_íslensk_eiginnöfn_karlmanna'
     WIKI_NAME_XPATH = '//div[@id="mw-content-text"]/div/ul/li/a'
     WIKI_GENETIVE_XPATH = '//*[contains(text(), "Eignarfall")]'
+    DATA_FOLDER = 'data'
     NAMES_FILE = 'icelandic_names.json'
     NON_GENETIVE_NAMES_FILE = 'non_genetive_names.json'
     names = {
@@ -79,10 +80,10 @@ class NameScraper(object):
         """Saves names to a json file
         """
         file_path = os.path.dirname(__file__)
-        with open(os.path.join(file_path, self.NAMES_FILE), 'w') as outfile:
+        with open(os.path.join(file_path, self.DATA_FOLDER, self.NAMES_FILE), 'w') as outfile:
             json.dump(self.names, outfile, indent=2)
 
-        with open(os.path.join(file_path, self.NON_GENETIVE_NAMES_FILE), 'w') as outfile:
+        with open(os.path.join(file_path, self.DATA_FOLDER, self.NON_GENETIVE_NAMES_FILE), 'w') as outfile:
             json.dump(self.non_genetive_names, outfile, indent=2)
 
     def update_names(self):
