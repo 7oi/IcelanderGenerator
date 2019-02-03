@@ -1,7 +1,4 @@
-# -*- coding: utf-8 -*-
-"""name_scraper module
-Contains the NameScraper class.
-"""
+"""The scraper of names from wikipedia"""
 from __future__ import print_function
 from __future__ import unicode_literals
 from builtins import object
