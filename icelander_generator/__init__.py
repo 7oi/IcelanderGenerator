@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """Generator for random Icelanders"""
 from __future__ import unicode_literals
 from builtins import object
@@ -31,7 +32,7 @@ class Icelander(object):
 
     def __init__(self):
         file_path = os.path.dirname(__file__)
-        with open(os.path.join(file_path, NameScraper.DATA_FOLDER, NameScraper.NAMES_FILE), 'r') as names_file:
+        with open(os.path.join(file_path, NameScraper.DATA_FOLDER, NameScraper.NAMES_FILE), 'rt') as names_file:
             self.names = json.loads(names_file.read())
 
     def get_first_name(self, gender='female'):

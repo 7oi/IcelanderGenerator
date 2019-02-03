@@ -1,4 +1,4 @@
-astroid==2.1.0
+astroid
 bleach==3.1.0
 bumpversion==0.5.3
 certifi==2018.11.29
@@ -13,7 +13,7 @@ lxml==4.3.0
 mccabe==0.6.1
 pkginfo==1.5.0.1
 Pygments==2.3.1
-pylint==2.2.2
+pylint
 readme-renderer==24.0
 requests==2.21.0
 requests-toolbelt==0.9.1
