@@ -11,6 +11,8 @@ update_pypi:
 
 clean:
 	rm -Rf build dist
+	find . -name '*.py[co]' -delete
+	find . -name '__pycache__' -delete
 
 lint:
 	pylint icelander_generator --rcfile=setup.cfg
