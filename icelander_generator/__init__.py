@@ -14,7 +14,7 @@ from .name_scraper import NameScraper
 from .address import Address
 
 __author__ = "7oi"
-__version__ = "0.3.1"
+__version__ = "0.3.2"
 __license__ = 'MIT'
 
 
