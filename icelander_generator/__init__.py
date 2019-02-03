@@ -12,7 +12,7 @@ from kennitala import Kennitala
 from .name_scraper import NameScraper
 
 __author__ = "7oi"
-__version__ = "0.2.1"
+__version__ = "0.2.2"
 __license__ = 'MIT'
 
 
