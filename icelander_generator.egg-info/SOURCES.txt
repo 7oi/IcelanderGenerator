@@ -3,7 +3,6 @@ README.md
 setup.cfg
 setup.py
 icelander_generator/__init__.py
-icelander_generator/generator.py
 icelander_generator/icelandic_names.json
 icelander_generator/name_scraper.py
 icelander_generator/rejects.json
